@@ -4,7 +4,7 @@ import axios from "axios";
 import EthImage from "../images/ethereum.svg";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
-import SkeletonItemDetails from "../components/UI/SkeletonItemDetails";
+import SkeletonItemDetails from "../components/UI/SkeletonItemDetails/SkeletonItemDetails";
 
 
 const ItemDetails = () => {

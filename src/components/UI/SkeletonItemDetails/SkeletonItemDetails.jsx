@@ -1,4 +1,3 @@
-// components/UI/SkeletonItemDetails.jsx
 import React from "react";
 import "./SkeletonItemDetails.css";
 
