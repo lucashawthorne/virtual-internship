@@ -1,8 +1,8 @@
-// components/UI/SkeletonCollectionCard.jsx
+// components/UI/SkeletonCard.jsx
 import React from "react";
 import Skeleton from "./Skeleton";
 
-const SkeletonCollectionCard = () => {
+const SkeletonCard = () => {
   return (
     <div className="item">
       <div className="nft_coll">
@@ -28,4 +28,4 @@ const SkeletonCollectionCard = () => {
   );
 };
 
-export default SkeletonCollectionCard;
+export default SkeletonCard;
