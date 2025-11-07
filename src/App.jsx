@@ -5,16 +5,18 @@ import Author from "./pages/Author";
 import ItemDetails from "./pages/ItemDetails";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import useScrollRestoration from "./components/ScrollRestoration";
 
 function App() {
+  useScrollRestoration();
   return (
     <Router>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/author" element={<Author />} />
-        <Route path="/item-details" element={<ItemDetails />} />
+        <Route path="/item-details/:nftId" element={<ItemDetails />} />
+        <Route path="/author/:authorId" element={<Author />} />
       </Routes>
       <Footer />
     </Router>
