@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/virtual-internship/static/css/main.e9f6391e.css",
-    "main.js": "/virtual-internship/static/js/main.0aa2f62f.js",
+    "main.js": "/virtual-internship/static/js/main.5ec228f0.js",
     "static/js/787.9cda0de9.chunk.js": "/virtual-internship/static/js/787.9cda0de9.chunk.js",
     "static/media/icofont.woff": "/virtual-internship/static/media/icofont.dad3accba068281878f1.woff",
     "static/media/icofont.woff2": "/virtual-internship/static/media/icofont.9c33516aab48c61e3081.woff2",
@@ -27,11 +27,11 @@
     "index.html": "/virtual-internship/index.html",
     "static/media/ethereum.svg": "/virtual-internship/static/media/ethereum.df265e367364f285053a1285ad8d418d.svg",
     "main.e9f6391e.css.map": "/virtual-internship/static/css/main.e9f6391e.css.map",
-    "main.0aa2f62f.js.map": "/virtual-internship/static/js/main.0aa2f62f.js.map",
+    "main.5ec228f0.js.map": "/virtual-internship/static/js/main.5ec228f0.js.map",
     "787.9cda0de9.chunk.js.map": "/virtual-internship/static/js/787.9cda0de9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e9f6391e.css",
-    "static/js/main.0aa2f62f.js"
+    "static/js/main.5ec228f0.js"
   ]
 }
