@@ -1,64 +1,84 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import NFTCard from "../NFTCard";
+import SkeletonCard from "../UI/SkeletonCard";
 
-const AuthorItems = () => {
+const AuthorItems = ({ authorId }) => {
+  const [items, setItems] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(8);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAuthorItems = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`
+        );
+
+        const authorData = response.data;
+
+        // ✅ Map authorImage to each NFT
+        const nfts = (authorData.nftCollection || []).map((nft) => ({
+          ...nft,
+          authorImage: authorData.authorImage,
+          authorName: authorData.authorName,
+          authorId: authorData.authorId,
+        }));
+
+        setItems(nfts);
+      } catch (error) {
+        console.error("Error fetching author items:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (authorId) fetchAuthorItems();
+  }, [authorId]);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 4, items.length));
+  };
+
   return (
-    <div className="de_tab_content">
-      <div className="tab-1">
-        <div className="row">
-          {new Array(8).fill(0).map((_, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
-              <div className="nft__item">
-                <div className="author_list_pp">
-                  <Link to="">
-                    <img className="lazy" src={AuthorImage} alt="" />
-                    <i className="fa fa-check"></i>
-                  </Link>
+    <>
+      <div className="row">
+        {loading
+          ? Array(8)
+              .fill()
+              .map((_, i) => (
+                <div
+                  key={i}
+                  className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                  style={{ display: "block" }}
+                >
+                  <SkeletonCard />
                 </div>
-                <div className="nft__item_wrap">
-                  <div className="nft__item_extra">
-                    <div className="nft__item_buttons">
-                      <button>Buy Now</button>
-                      <div className="nft__item_share">
-                        <h4>Share</h4>
-                        <a href="" target="_blank" rel="noreferrer">
-                          <i className="fa fa-facebook fa-lg"></i>
-                        </a>
-                        <a href="" target="_blank" rel="noreferrer">
-                          <i className="fa fa-twitter fa-lg"></i>
-                        </a>
-                        <a href="">
-                          <i className="fa fa-envelope fa-lg"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <Link to="/item-details">
-                    <img
-                      src={nftImage}
-                      className="lazy nft__item_preview"
-                      alt=""
-                    />
-                  </Link>
-                </div>
-                <div className="nft__item_info">
-                  <Link to="/item-details">
-                    <h4>Pinky Ocean</h4>
-                  </Link>
-                  <div className="nft__item_price">2.52 ETH</div>
-                  <div className="nft__item_like">
-                    <i className="fa fa-heart"></i>
-                    <span>97</span>
-                  </div>
-                </div>
+              ))
+          : items.slice(0, visibleCount).map((item) => (
+              <div
+                key={item.nftId || item.id}
+                className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                style={{ display: "block" }}
+              >
+                <NFTCard item={item} loading={loading} />
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
       </div>
-    </div>
+
+      {!loading && items.length === 0 && (
+        <p className="text-center mt-4">No items found for this author.</p>
+      )}
+
+      {visibleCount < items.length && !loading && (
+        <div className="col-md-12 text-center mt-4">
+          <button onClick={handleLoadMore} className="btn-main lead">
+            Load more
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
