@@ -33,8 +33,8 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>New Items</h2>
-              <div className="small-border bg-color-2"></div>
+              <h2 data-aos="fade-up" data-aos-duration="800" data-aos-offset="-80">New Items</h2>
+              <div data-aos="fade-up" data-aos-duration="800" data-aos-offset="-80" className="small-border bg-color-2"></div>
             </div>
           </div>
 
@@ -60,7 +60,7 @@ const NewItems = () => {
                     </div>
                   ))
               : items.map((item, index) => (
-                  <div className="item" key={index}>
+                  <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="-40" className="item" key={index}>
                     <NFTCard item={item} loading={loading} />
                   </div>
                 ))}

@@ -29,12 +29,12 @@ const TopSellers = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>Top Sellers</h2>
-              <div className="small-border bg-color-2"></div>
+              <h2 data-aos="fade-up" data-aos-duration="800" data-aos-offset="-80">Top Sellers</h2>
+              <div data-aos="fade-up" data-aos-duration="800" data-aos-offset="-80" className="small-border bg-color-2"></div>
             </div>
           </div>
           <div className="col-md-12">
-            <ol className="author_list">
+            <ol data-aos="fade-up" data-aos-duration="1000" data-aos-offset="-40" className="author_list">
               {loading
                 ? Array(12)
                     .fill()
