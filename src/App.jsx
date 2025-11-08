@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 function App() {
   useScrollRestoration();
   return (
-    <Router>
+    <Router basename="/virtual-internship">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
