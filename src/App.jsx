@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 function App() {
   useScrollRestoration();
   return (
-    <Router basename="/virtual-internship">
+    <Router basename="/ultraverse-marketplace">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
